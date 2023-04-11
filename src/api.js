@@ -15,7 +15,7 @@ router.get("/", (req, res) => {
 });
 
 // Use the router to handle requests to the `/.netlify/functions/api` path
-app.use(`/api`, router);
+app.use(`/.netlify/functions/api`, router);
 
 // Export the app and the serverless function
 module.exports = app;
