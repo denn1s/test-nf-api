@@ -1,0 +1,26 @@
+{
+  "name": "gp2",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "netlify-lambda serve src",
+    "build": "netlify-lambda build src"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/denn1s/test-nf-api.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/denn1s/test-nf-api/issues"
+  },
+  "homepage": "https://github.com/denn1s/test-nf-api#readme",
+  "dependencies": {
+    "express": "^4.18.2",
+    "netlify-lambda": "^2.0.16",
+    "serverless-http": "^3.2.0"
+  }
+}
