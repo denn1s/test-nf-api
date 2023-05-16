@@ -1,6 +1,6 @@
 const mysql = require('mysql2/promise');
 
-exports.handler = async (event) => {
+exports.handler = async () => {
   const dbConfig = {
     host: 'aws.connect.psdb.cloud',
     port: 3306,
@@ -11,33 +11,18 @@ exports.handler = async (event) => {
       rejectUnauthorized: true,
     },
   };
+  const pool = mysql.createPool(dbConfig);
+  const connection = await pool.getConnection();
+  const [rows] = await connection.query('SELECT * FROM MOCK_DATA');
+  connection.release();
 
-  try {
-    const pool = mysql.createPool(dbConfig);
-    const connection = await pool.getConnection();
-    const [rows] = await connection.query('SELECT * FROM MOCK_DATA');
-    connection.release();
+  const response = {
+    statusCode: 200,
+    body: JSON.stringify({ data: rows }),
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  };
 
-    const response = {
-      statusCode: 200,
-      body: JSON.stringify({ data: rows }),
-      headers: {
-        'Content-Type': 'application/json',
-      },
-    };
-
-    return response;
-  } catch (error) {
-    console.error('Error executing MySQL query:', error);
-
-    const response = {
-      statusCode: 500,
-      body: JSON.stringify({ error: 'Internal Server Error' }),
-      headers: {
-        'Content-Type': 'application/json',
-      },
-    };
-
-    return response;
-  }
+  return response;
 }
