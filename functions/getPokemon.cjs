@@ -4,8 +4,8 @@ exports.handler = async () => {
   const dbConfig = {
     host: 'aws.connect.psdb.cloud',
     port: 3306,
-    user: 'nyzw8b2gv4zxmv08mrpo',
-    password: 'pscale_pw_zK9Mxqq55opNT6W7kY9RauXgEkkZQnvoIvgqZbvOOiA',
+    user: 'it4g67yoskyjxmk6rjc6',
+    password: 'pscale_pw_cykUTCkqvlmoVjseeeQrUWsmJcY3NXOQpUGqNSxdLi2',
     database: 'test-database',
     ssl: {
       rejectUnauthorized: true,
